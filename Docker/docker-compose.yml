@@ -1,0 +1,1201 @@
+x-logging: &id001
+  driver: json-file
+  options:
+    max-size: 10m
+    max-file: '3'
+services:
+  memcached-memcached:
+    build: ./services/memcached/memcached
+    image: protocol-fingerprinting-memcached-memcached
+    ports:
+    - 127.0.0.1:${MEMCACHED_PORT}:11211
+    profiles:
+    - memcached
+    - all
+    restart: 'no'
+    logging: *id001
+  redis-redis7:
+    build: ./services/redis/redis7
+    image: protocol-fingerprinting-redis-redis7
+    ports:
+    - 127.0.0.1:${REDIS_PORT}:6379
+    profiles:
+    - redis
+    - all
+    restart: 'no'
+    logging: *id001
+  irc-ngircd:
+    build: ./services/irc/ngircd
+    image: protocol-fingerprinting-irc-ngircd
+    ports:
+    - 127.0.0.1:${IRC_PORT}:6667
+    profiles:
+    - irc
+    - all
+    restart: 'no'
+    logging: *id001
+  mqtt-mosquitto-v311:
+    build: ./services/mqtt/mosquitto-v311
+    image: protocol-fingerprinting-mqtt-mosquitto-v311
+    ports:
+    - 127.0.0.1:${MQTTV311_PORT}:1883
+    profiles:
+    - mqttv311
+    - mqtt
+    - all
+    restart: 'no'
+    logging: *id001
+  mqtt-mosquitto-v50:
+    build: ./services/mqtt/mosquitto-v50
+    image: protocol-fingerprinting-mqtt-mosquitto-v50
+    ports:
+    - 127.0.0.1:${MQTTV50_PORT}:1883
+    profiles:
+    - mqttv50
+    - mqtt
+    - all
+    restart: 'no'
+    logging: *id001
+  dns-bind9:
+    build: ./services/dns/bind9
+    image: protocol-fingerprinting-dns-bind9
+    ports:
+    - 127.0.0.1:${DNS_PORT}:53/udp
+    - 127.0.0.1:${DNS_PORT}:53/tcp
+    profiles:
+    - dns
+    - all
+    restart: 'no'
+    logging: *id001
+  ldap-openldap:
+    build: ./services/ldap/openldap
+    image: protocol-fingerprinting-ldap-openldap
+    ports:
+    - 127.0.0.1:${LDAP_PORT}:389
+    profiles:
+    - ldap
+    - all
+    restart: 'no'
+    logging: *id001
+  http2-nginx-h2c:
+    build: ./services/http2/nginx-h2c
+    image: protocol-fingerprinting-http2-nginx-h2c
+    ports:
+    - 127.0.0.1:${HTTP2_PORT}:80
+    profiles:
+    - http2
+    - all
+    restart: 'no'
+    logging: *id001
+  amqp-rabbitmq:
+    build: ./services/amqp/rabbitmq
+    image: protocol-fingerprinting-amqp-rabbitmq
+    ports:
+    - 127.0.0.1:${AMQP_PORT}:5672
+    profiles:
+    - amqp
+    - all
+    restart: 'no'
+    logging: *id001
+  smb-samba:
+    build: ./services/smb/samba
+    image: protocol-fingerprinting-smb-samba
+    ports:
+    - 127.0.0.1:${SMB_PORT}:445
+    profiles:
+    - smb
+    - all
+    restart: 'no'
+    logging: *id001
+  rdp-xrdp:
+    build: ./services/rdp/xrdp
+    image: protocol-fingerprinting-rdp-xrdp
+    ports:
+    - 127.0.0.1:${RDP_PORT}:3389
+    profiles:
+    - rdp
+    - all
+    restart: 'no'
+    logging: *id001
+  modbus-pymodbus:
+    build: ./services/modbus/pymodbus
+    image: protocol-fingerprinting-modbus-pymodbus
+    ports:
+    - 127.0.0.1:${MODBUS_PORT}:502
+    profiles:
+    - modbus
+    - all
+    restart: 'no'
+    logging: *id001
+  rtsp-mediamtx:
+    build: ./services/rtsp/mediamtx
+    image: protocol-fingerprinting-rtsp-mediamtx
+    ports:
+    - 127.0.0.1:${RTSP_PORT}:8554
+    profiles:
+    - rtsp
+    - all
+    restart: 'no'
+    logging: *id001
+  x11-xvfb:
+    build: ./services/x11/xvfb
+    image: protocol-fingerprinting-x11-xvfb
+    ports:
+    - 127.0.0.1:${X11_PORT}:6000
+    profiles:
+    - x11
+    - all
+    restart: 'no'
+    logging: *id001
+  bittorrent-transmission:
+    build: ./services/bittorrent/transmission
+    image: protocol-fingerprinting-bittorrent-transmission
+    ports:
+    - 127.0.0.1:${BT_PORT}:9091
+    - 127.0.0.1:${BT_PEER_PORT}:51413/tcp
+    - 127.0.0.1:${BT_PEER_PORT}:51413/udp
+    profiles:
+    - bittorrent
+    - all
+    restart: 'no'
+    logging: *id001
+  mongodb-mongo7:
+    build: ./services/mongodb/mongo7
+    image: protocol-fingerprinting-mongodb-mongo7
+    ports:
+    - 127.0.0.1:${MONGODB_PORT}:27017
+    profiles:
+    - mongodb
+    - all
+    restart: 'no'
+    logging: *id001
+  bolt-neo4j:
+    build: ./services/bolt/neo4j
+    image: protocol-fingerprinting-bolt-neo4j
+    ports:
+    - 127.0.0.1:${BOLT_PORT}:7687
+    profiles:
+    - bolt
+    - all
+    restart: 'no'
+    logging: *id001
+  rethinkdb-rethinkdb-native:
+    build: ./services/rethinkdb/rethinkdb-native
+    image: protocol-fingerprinting-rethinkdb-rethinkdb-native
+    ports:
+    - 127.0.0.1:${RETHINKDB_PORT}:28015
+    profiles:
+    - rethinkdb
+    - all
+    restart: 'no'
+    logging: *id001
+  ssh-openssh:
+    build: ./services/ssh/openssh
+    image: protocol-fingerprinting-ssh-openssh
+    ports:
+    - 127.0.0.1:${SSH_PORT}:22
+    profiles:
+    - ssh
+    - all
+    restart: 'no'
+    logging: *id001
+  ftp-pyftpd:
+    build: ./services/ftp/pyftpd
+    image: protocol-fingerprinting-ftp-pyftpd
+    ports:
+    - 127.0.0.1:${FTP_PORT}:21
+    profiles:
+    - ftp
+    - all
+    restart: 'no'
+    logging: *id001
+  telnet-busybox:
+    build: ./services/telnet/busybox
+    image: protocol-fingerprinting-telnet-busybox
+    ports:
+    - 127.0.0.1:${TELNET_PORT}:23
+    profiles:
+    - telnet
+    - all
+    restart: 'no'
+    logging: *id001
+  http-nginx:
+    build: ./services/http/nginx
+    image: protocol-fingerprinting-http-nginx
+    ports:
+    - 127.0.0.1:${HTTP_PORT}:80
+    profiles:
+    - http
+    - all
+    restart: 'no'
+    logging: *id001
+  pop3-dovecot:
+    build: ./services/pop3/dovecot
+    image: protocol-fingerprinting-pop3-dovecot
+    ports:
+    - 127.0.0.1:${POP3_PORT}:110
+    profiles:
+    - pop3
+    - all
+    restart: 'no'
+    logging: *id001
+  imap-dovecot-imap:
+    build: ./services/imap/dovecot-imap
+    image: protocol-fingerprinting-imap-dovecot-imap
+    ports:
+    - 127.0.0.1:${IMAP_PORT}:143
+    profiles:
+    - imap
+    - all
+    restart: 'no'
+    logging: *id001
+  portmap-rpcbind:
+    build: ./services/portmap/rpcbind
+    image: protocol-fingerprinting-portmap-rpcbind
+    ports:
+    - 127.0.0.1:${PORTMAP_PORT}:111/tcp
+    - 127.0.0.1:${PORTMAP_PORT}:111/udp
+    profiles:
+    - portmap
+    - all
+    restart: 'no'
+    logging: *id001
+  ntp-chrony:
+    build: ./services/ntp/chrony
+    image: protocol-fingerprinting-ntp-chrony
+    cap_add:
+    - SYS_TIME
+    ports:
+    - 127.0.0.1:${NTP_PORT}:123/udp
+    profiles:
+    - ntp
+    - all
+    restart: 'no'
+    logging: *id001
+  snmp-net-snmp:
+    build: ./services/snmp/net-snmp
+    image: protocol-fingerprinting-snmp-net-snmp
+    ports:
+    - 127.0.0.1:${SNMP_PORT}:161/udp
+    profiles:
+    - snmp
+    - all
+    restart: 'no'
+    logging: *id001
+  ike-strongswan:
+    build: ./services/ike/strongswan
+    image: protocol-fingerprinting-ike-strongswan
+    cap_add:
+    - NET_ADMIN
+    ports:
+    - 127.0.0.1:${IKE_PORT}:500/udp
+    - 127.0.0.1:${IKE_PORT}:500/tcp
+    profiles:
+    - ike
+    - privileged
+    - all
+    restart: 'no'
+    logging: *id001
+  socks-dante:
+    build: ./services/socks/dante
+    image: protocol-fingerprinting-socks-dante
+    ports:
+    - 127.0.0.1:${SOCKS_PORT}:1080
+    profiles:
+    - socks
+    - all
+    restart: 'no'
+    logging: *id001
+  l2tp-xl2tpd:
+    build: ./services/l2tp/xl2tpd
+    image: protocol-fingerprinting-l2tp-xl2tpd
+    cap_add:
+    - NET_ADMIN
+    ports:
+    - 127.0.0.1:${L2TP_PORT}:1701/udp
+    profiles:
+    - l2tp
+    - all
+    restart: 'no'
+    logging: *id001
+  sip-kamailio:
+    build: ./services/sip/kamailio
+    image: protocol-fingerprinting-sip-kamailio
+    ports:
+    - 127.0.0.1:${SIP_PORT}:5060/udp
+    - 127.0.0.1:${SIP_PORT}:5060/tcp
+    profiles:
+    - sip
+    - all
+    restart: 'no'
+    logging: *id001
+  cwmp-genieacs:
+    build: ./services/cwmp/genieacs
+    image: protocol-fingerprinting-cwmp-genieacs
+    depends_on:
+    - mongodb-mongo7
+    environment:
+    - GENIEACS_MONGODB_CONNECTION_URL=mongodb://mongodb-mongo7:27017/genieacs
+    ports:
+    - 127.0.0.1:${CWMP_PORT}:7547
+    profiles:
+    - cwmp
+    - all
+    restart: 'no'
+    logging: *id001
+  ssh-dropbear:
+    build: ./services/ssh/dropbear
+    image: protocol-fingerprinting-ssh-dropbear
+    ports:
+    - 127.0.0.1:${SSH_DROPBEAR_PORT}:22
+    profiles:
+    - ssh
+    - alt
+    restart: 'no'
+    logging: *id001
+  ssh-asyncssh:
+    build: ./services/ssh/asyncssh
+    image: protocol-fingerprinting-ssh-asyncssh
+    ports:
+    - 127.0.0.1:${SSH_ASYNCSSH_PORT}:22
+    profiles:
+    - ssh
+    - alt
+    restart: 'no'
+    logging: *id001
+  ssh-lsh:
+    build: ./services/ssh/lsh
+    image: protocol-fingerprinting-ssh-lsh
+    ports:
+    - 127.0.0.1:${SSH_LSH_PORT}:22
+    profiles:
+    - ssh
+    - alt
+    restart: 'no'
+    logging: *id001
+  ssh-openssh-cfg:
+    build: ./services/ssh/openssh-cfg
+    image: protocol-fingerprinting-ssh-openssh-cfg
+    ports:
+    - 127.0.0.1:${SSH_OPENSSH_CFG_PORT}:22
+    profiles:
+    - ssh
+    - alt
+    restart: 'no'
+    logging: *id001
+  ftp-proftpd:
+    build: ./services/ftp/proftpd
+    image: protocol-fingerprinting-ftp-proftpd
+    ports:
+    - 127.0.0.1:${FTP_PROFTPD_PORT}:21
+    profiles:
+    - ftp
+    - alt
+    restart: 'no'
+    logging: *id001
+  ftp-pure-ftpd:
+    build: ./services/ftp/pure-ftpd
+    image: protocol-fingerprinting-ftp-pure-ftpd
+    ports:
+    - 127.0.0.1:${FTP_PUREFTPD_PORT}:21
+    profiles:
+    - ftp
+    - alt
+    cap_add:
+    - ALL
+    restart: 'no'
+    logging: *id001
+  ftp-pyftpd-cfg:
+    build: ./services/ftp/pyftpd-cfg
+    image: protocol-fingerprinting-ftp-pyftpd-cfg
+    ports:
+    - 127.0.0.1:${FTP_PYFTPD_CFG_PORT}:21
+    profiles:
+    - ftp
+    - alt
+    restart: 'no'
+    logging: *id001
+  http-apache:
+    build: ./services/http/apache
+    image: protocol-fingerprinting-http-apache
+    ports:
+    - 127.0.0.1:${HTTP_APACHE_PORT}:80
+    profiles:
+    - http
+    - alt
+    restart: 'no'
+    logging: *id001
+  http-lighttpd:
+    build: ./services/http/lighttpd
+    image: protocol-fingerprinting-http-lighttpd
+    ports:
+    - 127.0.0.1:${HTTP_LIGHTTPD_PORT}:80
+    profiles:
+    - http
+    - alt
+    restart: 'no'
+    logging: *id001
+  http-caddy:
+    build: ./services/http/caddy
+    image: protocol-fingerprinting-http-caddy
+    ports:
+    - 127.0.0.1:${HTTP_CADDY_PORT}:80
+    profiles:
+    - http
+    - alt
+    restart: 'no'
+    logging: *id001
+  http-tengine:
+    build: ./services/http/tengine
+    image: protocol-fingerprinting-http-tengine
+    ports:
+    - 127.0.0.1:${HTTP_TENGINE_PORT}:80
+    profiles:
+    - http
+    - alt
+    restart: 'no'
+    logging: *id001
+  http2-caddy:
+    build: ./services/http2/caddy
+    image: protocol-fingerprinting-http2-caddy
+    ports:
+    - 127.0.0.1:${HTTP2_CADDY_PORT}:80
+    profiles:
+    - http2
+    - alt
+    restart: 'no'
+    logging: *id001
+  http2-nghttpd:
+    build: ./services/http2/nghttpd
+    image: protocol-fingerprinting-http2-nghttpd
+    ports:
+    - 127.0.0.1:${HTTP2_NGHTTPD_PORT}:80
+    profiles:
+    - http2
+    - alt
+    restart: 'no'
+    logging: *id001
+  telnet-pytelnetd:
+    build: ./services/telnet/pytelnetd
+    image: protocol-fingerprinting-telnet-pytelnetd
+    ports:
+    - 127.0.0.1:${TELNET_BUSYBOX_PORT}:23
+    profiles:
+    - telnet
+    - alt
+    restart: 'no'
+    logging: *id001
+  telnet-inetd-telnetd:
+    build: ./services/telnet/inetd-telnetd
+    image: protocol-fingerprinting-telnet-inetd-telnetd
+    ports:
+    - 127.0.0.1:${TELNET_INETD_PORT}:23
+    profiles:
+    - telnet
+    - alt
+    restart: 'no'
+    logging: *id001
+  telnet-socat-telnetd:
+    build: ./services/telnet/socat-telnetd
+    image: protocol-fingerprinting-telnet-socat-telnetd
+    ports:
+    - 127.0.0.1:${TELNET_SOCAT_PORT}:23
+    profiles:
+    - telnet
+    - alt
+    restart: 'no'
+    logging: *id001
+  telnet-telnetlib3-cfg:
+    build: ./services/telnet/telnetlib3-cfg
+    image: protocol-fingerprinting-telnet-telnetlib3-cfg
+    ports:
+    - 127.0.0.1:${TELNET_TELNETLIB3_CFG_PORT}:23
+    profiles:
+    - telnet
+    - alt
+    restart: 'no'
+    logging: *id001
+  dns-dnsmasq:
+    build: ./services/dns/dnsmasq
+    image: protocol-fingerprinting-dns-dnsmasq
+    ports:
+    - 127.0.0.1:${DNS_DNSMASQ_PORT}:53/udp
+    - 127.0.0.1:${DNS_DNSMASQ_PORT}:53/tcp
+    profiles:
+    - dns
+    - alt
+    restart: 'no'
+    logging: *id001
+  dns-unbound:
+    build: ./services/dns/unbound
+    image: protocol-fingerprinting-dns-unbound
+    ports:
+    - 127.0.0.1:${DNS_UNBOUND_PORT}:53/udp
+    - 127.0.0.1:${DNS_UNBOUND_PORT}:53/tcp
+    profiles:
+    - dns
+    - alt
+    restart: 'no'
+    logging: *id001
+  dns-knot:
+    build: ./services/dns/knot
+    image: protocol-fingerprinting-dns-knot
+    ports:
+    - 127.0.0.1:${DNS_KNOT_PORT}:53/udp
+    - 127.0.0.1:${DNS_KNOT_PORT}:53/tcp
+    profiles:
+    - dns
+    - alt
+    restart: 'no'
+    logging: *id001
+  dns-bind-auth:
+    build: ./services/dns/bind-auth
+    image: protocol-fingerprinting-dns-bind-auth
+    ports:
+    - 127.0.0.1:${DNS_BIND_AUTH_PORT}:53/udp
+    - 127.0.0.1:${DNS_BIND_AUTH_PORT}:53/tcp
+    profiles:
+    - dns
+    - alt
+    restart: 'no'
+    logging: *id001
+  irc-inspircd:
+    build: ./services/irc/inspircd
+    image: protocol-fingerprinting-irc-inspircd
+    ports:
+    - 127.0.0.1:${IRC_INSPIRCD_PORT}:6667
+    profiles:
+    - irc
+    - alt
+    restart: 'no'
+    logging: *id001
+  irc-ircd-hybrid:
+    build: ./services/irc/ircd-hybrid
+    image: protocol-fingerprinting-irc-ircd-hybrid
+    ports:
+    - 127.0.0.1:${IRC_HYBRID_PORT}:6667
+    profiles:
+    - irc
+    - alt
+    restart: 'no'
+    logging: *id001
+  irc-ngircd-cfg:
+    build: ./services/irc/ngircd-cfg
+    image: protocol-fingerprinting-irc-ngircd-cfg
+    ports:
+    - 127.0.0.1:${IRC_NGIRCD_CFG_PORT}:6667
+    profiles:
+    - irc
+    - alt
+    restart: 'no'
+    logging: *id001
+  mqtt-amqtt:
+    build: ./services/mqtt/amqtt
+    image: protocol-fingerprinting-mqtt-amqtt
+    ports:
+    - 127.0.0.1:${MQTTV311_AMQTT_PORT}:1883
+    profiles:
+    - mqttv311
+    - mqtt
+    - alt
+    restart: 'no'
+    logging: *id001
+  mqtt-emqx-v311:
+    build: ./services/mqtt/emqx-v311
+    image: protocol-fingerprinting-mqtt-emqx-v311
+    ports:
+    - 127.0.0.1:${MQTTV311_EMQX_PORT}:1883
+    profiles:
+    - mqttv311
+    - mqtt
+    - alt
+    restart: 'no'
+    logging: *id001
+  mqtt-mosquitto-v311-cfg:
+    build: ./services/mqtt/mosquitto-v311-cfg
+    image: protocol-fingerprinting-mqtt-mosquitto-v311-cfg
+    ports:
+    - 127.0.0.1:${MQTTV311_MOSQUITTO_CFG_PORT}:1883
+    profiles:
+    - mqttv311
+    - mqtt
+    - alt
+    restart: 'no'
+    logging: *id001
+  mqtt-emqx-v50:
+    build: ./services/mqtt/emqx-v50
+    image: protocol-fingerprinting-mqtt-emqx-v50
+    ports:
+    - 127.0.0.1:${MQTTV50_EMQX_PORT}:1883
+    profiles:
+    - mqttv50
+    - mqtt
+    - alt
+    restart: 'no'
+    logging: *id001
+  mqtt-vernemq:
+    build: ./services/mqtt/vernemq
+    image: protocol-fingerprinting-mqtt-vernemq
+    ports:
+    - 127.0.0.1:${MQTTV50_VERNEMQ_PORT}:1883
+    profiles:
+    - mqttv50
+    - mqtt
+    - alt
+    restart: 'no'
+    logging: *id001
+  mqtt-mosquitto-v50-cfg:
+    build: ./services/mqtt/mosquitto-v50-cfg
+    image: protocol-fingerprinting-mqtt-mosquitto-v50-cfg
+    ports:
+    - 127.0.0.1:${MQTTV50_MOSQUITTO_CFG_PORT}:1883
+    profiles:
+    - mqttv50
+    - mqtt
+    - alt
+    restart: 'no'
+    logging: *id001
+  redis-redis5:
+    build: ./services/redis/redis5
+    image: protocol-fingerprinting-redis-redis5
+    ports:
+    - 127.0.0.1:${REDIS5_PORT}:6379
+    profiles:
+    - redis
+    - alt
+    restart: 'no'
+    logging: *id001
+  redis-redis6:
+    build: ./services/redis/redis6
+    image: protocol-fingerprinting-redis-redis6
+    ports:
+    - 127.0.0.1:${REDIS6_PORT}:6379
+    profiles:
+    - redis
+    - alt
+    restart: 'no'
+    logging: *id001
+  redis-valkey:
+    build: ./services/redis/valkey
+    image: protocol-fingerprinting-redis-valkey
+    ports:
+    - 127.0.0.1:${REDIS_VALKEY_PORT}:6379
+    profiles:
+    - redis
+    - alt
+    restart: 'no'
+    logging: *id001
+  redis-keydb:
+    build: ./services/redis/keydb
+    image: protocol-fingerprinting-redis-keydb
+    ports:
+    - 127.0.0.1:${REDIS_KEYDB_PORT}:6379
+    profiles:
+    - redis
+    - alt
+    restart: 'no'
+    logging: *id001
+  redis-dragonfly:
+    build: ./services/redis/dragonfly
+    image: protocol-fingerprinting-redis-dragonfly
+    ulimits:
+      memlock: -1
+    ports:
+    - 127.0.0.1:${REDIS_DRAGONFLY_PORT}:6379
+    profiles:
+    - redis
+    - alt
+    restart: 'no'
+    logging: *id001
+  redis-redis-nopersist:
+    build: ./services/redis/redis-nopersist
+    image: protocol-fingerprinting-redis-redis-nopersist
+    ports:
+    - 127.0.0.1:${REDIS_NOPERSIST_PORT}:6379
+    profiles:
+    - redis
+    - alt
+    restart: 'no'
+    logging: *id001
+  redis-redis-config:
+    build: ./services/redis/redis-config
+    image: protocol-fingerprinting-redis-redis-config
+    ports:
+    - 127.0.0.1:${REDIS_CONFIG_PORT}:6379
+    profiles:
+    - redis
+    - alt
+    restart: 'no'
+    logging: *id001
+  memcached-memcached-nocas:
+    build: ./services/memcached/memcached-nocas
+    image: protocol-fingerprinting-memcached-memcached-nocas
+    ports:
+    - 127.0.0.1:${MEMCACHED_NOCAS_PORT}:11211
+    profiles:
+    - memcached
+    - alt
+    restart: 'no'
+    logging: *id001
+  memcached-memcached-binary:
+    build: ./services/memcached/memcached-binary
+    image: protocol-fingerprinting-memcached-memcached-binary
+    ports:
+    - 127.0.0.1:${MEMCACHED_BINARY_PORT}:11211
+    profiles:
+    - memcached
+    - alt
+    restart: 'no'
+    logging: *id001
+  memcached-memcached-slab:
+    build: ./services/memcached/memcached-slab
+    image: protocol-fingerprinting-memcached-memcached-slab
+    ports:
+    - 127.0.0.1:${MEMCACHED_SLAB_PORT}:11211
+    profiles:
+    - memcached
+    - alt
+    restart: 'no'
+    logging: *id001
+  modbus-pymodbus-cfg:
+    build: ./services/modbus/pymodbus-cfg
+    image: protocol-fingerprinting-modbus-pymodbus-cfg
+    ports:
+    - 127.0.0.1:${MODBUS_PYMODBUS_CFG_PORT}:502
+    profiles:
+    - modbus
+    - alt
+    restart: 'no'
+    logging: *id001
+  smb-smb3-only:
+    build: ./services/smb/smb3-only
+    image: protocol-fingerprinting-smb-smb3-only
+    ports:
+    - 127.0.0.1:${SMB_SMB3_PORT}:445
+    profiles:
+    - smb
+    - alt
+    restart: 'no'
+    logging: *id001
+  smb-smb-nosign:
+    build: ./services/smb/smb-nosign
+    image: protocol-fingerprinting-smb-smb-nosign
+    ports:
+    - 127.0.0.1:${SMB_NOSIGN_PORT}:445
+    profiles:
+    - smb
+    - alt
+    restart: 'no'
+    logging: *id001
+  smb-smb-classic:
+    build: ./services/smb/smb-classic
+    image: protocol-fingerprinting-smb-smb-classic
+    ports:
+    - 127.0.0.1:${SMB_CLASSIC_PORT}:445
+    profiles:
+    - smb
+    - alt
+    restart: 'no'
+    logging: *id001
+  rdp-xrdp-tls:
+    build: ./services/rdp/xrdp-tls
+    image: protocol-fingerprinting-rdp-xrdp-tls
+    ports:
+    - 127.0.0.1:${RDP_TLS_PORT}:3389
+    profiles:
+    - rdp
+    - alt
+    restart: 'no'
+    logging: *id001
+  rdp-xrdp-basic:
+    build: ./services/rdp/xrdp-basic
+    image: protocol-fingerprinting-rdp-xrdp-basic
+    ports:
+    - 127.0.0.1:${RDP_BASIC_PORT}:3389
+    profiles:
+    - rdp
+    - alt
+    restart: 'no'
+    logging: *id001
+  rdp-xrdp-nla:
+    build: ./services/rdp/xrdp-nla
+    image: protocol-fingerprinting-rdp-xrdp-nla
+    ports:
+    - 127.0.0.1:${RDP_NLA_PORT}:3389
+    profiles:
+    - rdp
+    - alt
+    restart: 'no'
+    logging: *id001
+  amqp-rabbitmq-cfg:
+    build: ./services/amqp/rabbitmq-cfg
+    image: protocol-fingerprinting-amqp-rabbitmq-cfg
+    ports:
+    - 127.0.0.1:${AMQP_RABBITMQ_CFG_PORT}:5672
+    profiles:
+    - amqp
+    - alt
+    restart: 'no'
+    logging: *id001
+  bolt-neo4j4:
+    build: ./services/bolt/neo4j4
+    image: protocol-fingerprinting-bolt-neo4j4
+    ports:
+    - 127.0.0.1:${BOLT_NEO4J4_PORT}:7687
+    profiles:
+    - bolt
+    - alt
+    restart: 'no'
+    logging: *id001
+  bolt-memgraph:
+    build: ./services/bolt/memgraph
+    image: protocol-fingerprinting-bolt-memgraph
+    ports:
+    - 127.0.0.1:${BOLT_MEMGRAPH_PORT}:7687
+    profiles:
+    - unavailable
+    restart: 'no'
+    logging: *id001
+  rtsp-gstreamer:
+    build: ./services/rtsp/gstreamer
+    image: protocol-fingerprinting-rtsp-gstreamer
+    ports:
+    - 127.0.0.1:${RTSP_GSTREAMER_PORT}:8554
+    profiles:
+    - rtsp
+    - alt
+    restart: 'no'
+    logging: *id001
+  rtsp-mediamtx-cfg:
+    build: ./services/rtsp/mediamtx-cfg
+    image: protocol-fingerprinting-rtsp-mediamtx-cfg
+    ulimits:
+      nofile: 1048576
+    ports:
+    - 127.0.0.1:${RTSP_MEDIAMTX_CFG_PORT}:8554
+    profiles:
+    - rtsp
+    - alt
+    restart: 'no'
+    logging: *id001
+  x11-xorg:
+    build: ./services/x11/xorg
+    image: protocol-fingerprinting-x11-xorg
+    ports:
+    - 127.0.0.1:${X11_XORG_PORT}:6000
+    profiles:
+    - x11
+    - alt
+    restart: 'no'
+    logging: *id001
+  x11-xvnc:
+    build: ./services/x11/xvnc
+    image: protocol-fingerprinting-x11-xvnc
+    ports:
+    - 127.0.0.1:${X11_XVNC_PORT}:6000
+    profiles:
+    - x11
+    - alt
+    restart: 'no'
+    logging: *id001
+  bittorrent-qbittorrent:
+    build: ./services/bittorrent/qbittorrent
+    image: protocol-fingerprinting-bittorrent-qbittorrent
+    ports:
+    - 127.0.0.1:${BT_QBITTORRENT_PORT}:9091
+    profiles:
+    - bittorrent
+    - alt
+    restart: 'no'
+    logging: *id001
+  bittorrent-deluge:
+    build: ./services/bittorrent/deluge
+    image: protocol-fingerprinting-bittorrent-deluge
+    ports:
+    - 127.0.0.1:${BT_DELUGE_PORT}:8112
+    profiles:
+    - bittorrent
+    - alt
+    restart: 'no'
+    logging: *id001
+  mongodb-mongo5:
+    build: ./services/mongodb/mongo5
+    image: protocol-fingerprinting-mongodb-mongo5
+    ports:
+    - 127.0.0.1:${MONGODB5_PORT}:27017
+    profiles:
+    - mongodb
+    - alt
+    restart: 'no'
+    logging: *id001
+  mongodb-mongo6:
+    build: ./services/mongodb/mongo6
+    image: protocol-fingerprinting-mongodb-mongo6
+    ports:
+    - 127.0.0.1:${MONGODB6_PORT}:27017
+    profiles:
+    - mongodb
+    - alt
+    restart: 'no'
+    logging: *id001
+  rethinkdb-rethinkdb-23:
+    build: ./services/rethinkdb/rethinkdb-23
+    image: protocol-fingerprinting-rethinkdb-rethinkdb-23
+    ports:
+    - 127.0.0.1:${RETHINKDB_23_PORT}:28015
+    profiles:
+    - rethinkdb
+    - alt
+    restart: 'no'
+    logging: *id001
+  rethinkdb-rethinkdb-config:
+    build: ./services/rethinkdb/rethinkdb-config
+    image: protocol-fingerprinting-rethinkdb-rethinkdb-config
+    ports:
+    - 127.0.0.1:${RETHINKDB_CONFIG_PORT}:28015
+    profiles:
+    - rethinkdb
+    - alt
+    restart: 'no'
+    logging: *id001
+  pop3-dovecot-cfg:
+    build: ./services/pop3/dovecot-cfg
+    image: protocol-fingerprinting-pop3-dovecot-cfg
+    ports:
+    - 127.0.0.1:${POP3_DOVECOT_CFG_PORT}:110
+    profiles:
+    - pop3
+    - alt
+    restart: 'no'
+    logging: *id001
+  imap-dovecot-cfg:
+    build: ./services/imap/dovecot-cfg
+    image: protocol-fingerprinting-imap-dovecot-cfg
+    ports:
+    - 127.0.0.1:${IMAP_DOVECOT_CFG_PORT}:143
+    profiles:
+    - imap
+    - alt
+    restart: 'no'
+    logging: *id001
+  portmap-rpcbind-insecure:
+    build: ./services/portmap/rpcbind-insecure
+    image: protocol-fingerprinting-portmap-rpcbind-insecure
+    ports:
+    - 127.0.0.1:${PORTMAP_INSECURE_PORT}:111/tcp
+    - 127.0.0.1:${PORTMAP_INSECURE_PORT}:111/udp
+    profiles:
+    - portmap
+    - alt
+    restart: 'no'
+    logging: *id001
+  portmap-rpcbind-warm:
+    build: ./services/portmap/rpcbind-warm
+    image: protocol-fingerprinting-portmap-rpcbind-warm
+    ports:
+    - 127.0.0.1:${PORTMAP_WARM_PORT}:111/tcp
+    - 127.0.0.1:${PORTMAP_WARM_PORT}:111/udp
+    profiles:
+    - portmap
+    - alt
+    restart: 'no'
+    logging: *id001
+  socks-microsocks:
+    build: ./services/socks/microsocks
+    image: protocol-fingerprinting-socks-microsocks
+    ports:
+    - 127.0.0.1:${SOCKS_MICROSOCKS_PORT}:1080
+    profiles:
+    - socks
+    - alt
+    restart: 'no'
+    logging: *id001
+  socks-dante-cfg:
+    build: ./services/socks/dante-cfg
+    image: protocol-fingerprinting-socks-dante-cfg
+    ports:
+    - 127.0.0.1:${SOCKS_DANTE_CFG_PORT}:1080
+    profiles:
+    - socks
+    - alt
+    restart: 'no'
+    logging: *id001
+  cwmp-genieacs-cfg:
+    build: ./services/cwmp/genieacs-cfg
+    image: protocol-fingerprinting-cwmp-genieacs-cfg
+    depends_on:
+    - mongodb-mongo7
+    environment:
+    - GENIEACS_MONGODB_CONNECTION_URL=mongodb://mongodb-mongo7:27017/genieacs_alt
+    ports:
+    - 127.0.0.1:${CWMP_GENIEACS_CFG_PORT}:7547
+    profiles:
+    - cwmp
+    - alt
+    restart: 'no'
+    logging: *id001
+  ntp-ntpsec:
+    build: ./services/ntp/ntpsec
+    image: protocol-fingerprinting-ntp-ntpsec
+    cap_add:
+    - SYS_TIME
+    ports:
+    - 127.0.0.1:${NTP_NTPSEC_PORT}:123/udp
+    profiles:
+    - ntp
+    - alt
+    restart: 'no'
+    logging: *id001
+  ntp-openntpd:
+    build: ./services/ntp/openntpd
+    image: protocol-fingerprinting-ntp-openntpd
+    cap_add:
+    - SYS_TIME
+    ports:
+    - 127.0.0.1:${NTP_OPENNTPD_PORT}:123/udp
+    profiles:
+    - ntp
+    - alt
+    restart: 'no'
+    logging: *id001
+  ntp-ntp-classic:
+    build: ./services/ntp/ntp-classic
+    image: protocol-fingerprinting-ntp-ntp-classic
+    cap_add:
+    - SYS_TIME
+    ports:
+    - 127.0.0.1:${NTP_CLASSIC_PORT}:123/udp
+    profiles:
+    - ntp
+    - alt
+    restart: 'no'
+    logging: *id001
+  ntp-chrony-cfg:
+    build: ./services/ntp/chrony-cfg
+    image: protocol-fingerprinting-ntp-chrony-cfg
+    cap_add:
+    - SYS_TIME
+    ports:
+    - 127.0.0.1:${NTP_CHRONY_CFG_PORT}:123/udp
+    profiles:
+    - ntp
+    - alt
+    restart: 'no'
+    logging: *id001
+  snmp-pysnmp:
+    build: ./services/snmp/pysnmp
+    image: protocol-fingerprinting-snmp-pysnmp
+    ports:
+    - 127.0.0.1:${SNMP_PYSNMP_PORT}:161/udp
+    profiles:
+    - unavailable
+    restart: 'no'
+    logging: *id001
+  snmp-netsnmp-cfg:
+    build: ./services/snmp/netsnmp-cfg
+    image: protocol-fingerprinting-snmp-netsnmp-cfg
+    ports:
+    - 127.0.0.1:${SNMP_NETSNMP_CFG_PORT}:161/udp
+    profiles:
+    - snmp
+    - alt
+    restart: 'no'
+    logging: *id001
+  snmp-netsnmp-v3:
+    build: ./services/snmp/netsnmp-v3
+    image: protocol-fingerprinting-snmp-netsnmp-v3
+    ports:
+    - 127.0.0.1:${SNMP_V3_PORT}:161/udp
+    profiles:
+    - snmp
+    - alt
+    restart: 'no'
+    logging: *id001
+  ike-libreswan:
+    build: ./services/ike/libreswan
+    image: protocol-fingerprinting-ike-libreswan
+    cap_add:
+    - NET_ADMIN
+    ports:
+    - 127.0.0.1:${IKE_LIBRESWAN_PORT}:500/udp
+    - 127.0.0.1:${IKE_LIBRESWAN_PORT}:500/tcp
+    profiles:
+    - ike
+    - privileged
+    - alt
+    restart: 'no'
+    logging: *id001
+  ike-openiked:
+    build: ./services/ike/openiked
+    image: protocol-fingerprinting-ike-openiked
+    cap_add:
+    - NET_ADMIN
+    ports:
+    - 127.0.0.1:${IKE_OPENIKED_PORT}:500/udp
+    - 127.0.0.1:${IKE_OPENIKED_PORT}:500/tcp
+    profiles:
+    - ike
+    - privileged
+    - alt
+    restart: 'no'
+    logging: *id001
+  ike-strongswan-v2only:
+    build: ./services/ike/strongswan-v2only
+    image: protocol-fingerprinting-ike-strongswan-v2only
+    cap_add:
+    - NET_ADMIN
+    ports:
+    - 127.0.0.1:${IKE_STRONGSWAN_V2ONLY_PORT}:500/udp
+    - 127.0.0.1:${IKE_STRONGSWAN_V2ONLY_PORT}:500/tcp
+    profiles:
+    - ike
+    - privileged
+    - alt
+    restart: 'no'
+    logging: *id001
+  sip-asterisk:
+    build: ./services/sip/asterisk
+    image: protocol-fingerprinting-sip-asterisk
+    ports:
+    - 127.0.0.1:${SIP_ASTERISK_PORT}:5060/udp
+    - 127.0.0.1:${SIP_ASTERISK_PORT}:5060/tcp
+    profiles:
+    - sip
+    - alt
+    restart: 'no'
+    logging: *id001
+  sip-opensips:
+    build: ./services/sip/opensips
+    image: protocol-fingerprinting-sip-opensips
+    ports:
+    - 127.0.0.1:${SIP_OPENSIPS_PORT}:5060/udp
+    - 127.0.0.1:${SIP_OPENSIPS_PORT}:5060/tcp
+    profiles:
+    - sip
+    - alt
+    restart: 'no'
+    logging: *id001
+  sip-kamailio-cfg:
+    build: ./services/sip/kamailio-cfg
+    image: protocol-fingerprinting-sip-kamailio-cfg
+    ports:
+    - 127.0.0.1:${SIP_KAMAILIO_CFG_PORT}:5060/udp
+    - 127.0.0.1:${SIP_KAMAILIO_CFG_PORT}:5060/tcp
+    profiles:
+    - sip
+    - alt
+    restart: 'no'
+    logging: *id001
+  l2tp-xl2tpd-cfg:
+    build: ./services/l2tp/xl2tpd-cfg
+    image: protocol-fingerprinting-l2tp-xl2tpd-cfg
+    cap_add:
+    - NET_ADMIN
+    ports:
+    - 127.0.0.1:${L2TP_CFG_PORT}:1701/udp
+    profiles:
+    - l2tp
+    - alt
+    restart: 'no'
+    logging: *id001
+name: probeweaver

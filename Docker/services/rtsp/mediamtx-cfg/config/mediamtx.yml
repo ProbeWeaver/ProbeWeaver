@@ -1,0 +1,18 @@
+# MediaMTX RTSP server - configuration variant.
+# TCP-only transport and different timeouts change the OPTIONS/DESCRIBE
+# behaviour vs. the baseline mediamtx service.
+rtspAddress: 0.0.0.0:8554
+
+protocols: [tcp]
+
+readTimeout: 30s
+writeTimeout: 30s
+
+logLevel: info
+logDestinations: [stdout]
+
+paths:
+  all:
+    source: publisher
+  stream:
+    source: publisher

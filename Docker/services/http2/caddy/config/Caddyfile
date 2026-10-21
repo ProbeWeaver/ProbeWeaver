@@ -1,0 +1,13 @@
+{
+	admin off
+	auto_https off
+	servers {
+		# Enable cleartext HTTP/2 (h2c) in addition to HTTP/1.1.
+		protocols h1 h2c
+	}
+}
+
+:80 {
+	root * /var/www/html
+	file_server
+}

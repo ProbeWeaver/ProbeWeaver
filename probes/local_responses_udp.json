@@ -1,0 +1,149 @@
+[
+  {
+    "rank": 1,
+    "packet_hex": "ffff003a0000000000000002000186a00000220200000000000000ca000000000000000000000000000000000000000000008008000000090001",
+    "transport": "udp",
+    "responses": [
+      {
+        "service": "dns",
+        "response_hex": "ffff80110000000000000000",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "dns"
+      },
+      {
+        "service": "dns-bind-auth",
+        "response_hex": "ffff80110000000000000000",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "dns"
+      },
+      {
+        "service": "dns-dnsmasq",
+        "response_hex": "ffff80950000000000000000",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "dns"
+      },
+      {
+        "service": "dns-knot",
+        "response_hex": "ffff80010000000000000000",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "dns"
+      },
+      {
+        "service": "dns-unbound",
+        "response_hex": "ffff80310000000000000002000186a00000220200000000000000ca000000000000000000000000000000000000000000008008000000090001",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "dns"
+      },
+      {
+        "service": "ike-strongswan-v2only",
+        "response_hex": "ffff003a0000000000000002000186a02920222800000000000000240000000800000005",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "ikev2"
+      },
+      {
+        "service": "ikev2",
+        "response_hex": "ffff003a0000000000000002000186a02920222800000000000000240000000800000005",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "ikev2"
+      },
+      {
+        "service": "l2tp",
+        "response_hex": "c802000cffff000000000001",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "l2tp"
+      },
+      {
+        "service": "l2tp-xl2tpd-cfg",
+        "response_hex": "c802000cffff000000000001",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "l2tp"
+      },
+      {
+        "service": "portmap-rpcbind-insecure",
+        "response_hex": "ffff003a00000001000000010000000100000002",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "portmapv2"
+      },
+      {
+        "service": "portmap-rpcbind-warm",
+        "response_hex": "ffff003a00000001000000010000000100000002",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "portmapv2"
+      },
+      {
+        "service": "portmapv2",
+        "response_hex": "ffff003a00000001000000010000000100000002",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "portmapv2"
+      }
+    ]
+  },
+  {
+    "rank": 2,
+    "packet_hex": "2334ff000001000000000000076578616d706c6503636f6d00000100010000000000000000000000e000000000000002",
+    "transport": "udp",
+    "responses": [
+      {
+        "service": "ntp-chrony-cfg",
+        "response_hex": "2405ffe600000000000000007f7f0101ee534215e81423b8e000000000000002ee5342524a4fe827ee5342524a54acf2",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "ntpv4"
+      },
+      {
+        "service": "ntp-ntp-classic",
+        "response_hex": "240bffe800000000000002d67f7f0100ee53424657a1071fe000000000000002ee5342524a4ccc72ee5342524a5204f9",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "ntpv4"
+      },
+      {
+        "service": "ntp-ntpsec",
+        "response_hex": "2409ffe800000000000002da7f7f0100ee5342428ca0b329e000000000000002ee5342524a2afe3fee5342524a3082c2",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "ntpv4"
+      },
+      {
+        "service": "ntp-openntpd",
+        "response_hex": "e400ffe30000000000000000000000000000000000000000e000000000000002ee5342524a4a07ffee5342524a4abfff",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "ntpv4"
+      },
+      {
+        "service": "ntpv4",
+        "response_hex": "240affe600000000000000007f7f0101ee5342164222ac45e000000000000002ee53425230ede2edee53425230f27fd8",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "ntpv4"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "packet_hex": "ffffffffffffffff4c4954590d0a000000ff000000000000000000e800000030000000000000000000000000000000000000000000000000000000000300000803000002000000000000000000000088000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff000014000000000000000000000000000000000034",
+    "transport": "udp",
+    "responses": [
+      {
+        "service": "ike-libreswan",
+        "response_hex": "ffffffffffffffff4c4954590d0a00002920002000000000000000240000000800000005",
+        "banner_hex": "",
+        "response_phase": "post_payload",
+        "cluster": "ikev2"
+      }
+    ]
+  }
+]

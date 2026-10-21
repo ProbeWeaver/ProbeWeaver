@@ -1,0 +1,24 @@
+
+rtspAddress: 0.0.0.0:8554
+
+protocols: [tcp, udp]
+
+readTimeout: 10s
+
+writeTimeout: 10s
+
+logLevel: info
+
+logDestinations: [stdout]
+
+apiAddress: :9997
+
+paths:
+  all:
+    source: publisher
+
+  live:
+    source: publisher
+
+  test:
+    source: publisher

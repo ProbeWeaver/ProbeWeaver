@@ -1,0 +1,572 @@
+[
+  {
+    "service": "ssh",
+    "pattern": "^SSH-",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "telnet",
+    "pattern": "^\\xff[\\xfb\\xfc\\xfd\\xfe]",
+    "type": "magic",
+    "source": "hand"
+  },
+  {
+    "service": "ftp",
+    "pattern": "(?i)^220[ -][^\\r\\n]*ftp",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "smtp",
+    "pattern": "(?i)^220[ -][^\\r\\n]*(?:e?smtp|mail)",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "pop3",
+    "pattern": "^\\+OK",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "imapv4",
+    "pattern": "^\\* OK",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "irc",
+    "pattern": "^(?::[A-Za-z0-9._-]+ \\d{3} |NOTICE AUTH )",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "http",
+    "pattern": "^HTTP/[0-9]\\.[0-9] [0-9]{3}",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "rtsp",
+    "pattern": "^RTSP/[0-9]\\.[0-9] [0-9]{3}",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "redis",
+    "pattern": "^-(?:ERR|NOAUTH|BUSY|WRONGPASS|LOADING|MOVED|ASK|CLUSTERDOWN|NOREPLICAS) ",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "amqp",
+    "pattern": "^AMQP\\x00",
+    "type": "magic",
+    "source": "hand"
+  },
+  {
+    "service": "memcached",
+    "pattern": "^(?:ERROR\\r\\n|STAT |CLIENT_ERROR|SERVER_ERROR)",
+    "type": "banner",
+    "source": "hand"
+  },
+  {
+    "service": "smb",
+    "pattern": "^(?:\\xffSMB|\\xfeSMB)",
+    "type": "magic",
+    "source": "hand"
+  },
+  {
+    "service": "bittorrentv10",
+    "pattern": "^\\x13BitTorrent protocol",
+    "type": "magic",
+    "source": "hand"
+  },
+  {
+    "service": "smb",
+    "type": "magic",
+    "magic_hex": "ff534d42",
+    "source": "hand"
+  },
+  {
+    "service": "smb",
+    "type": "magic",
+    "magic_hex": "fe534d42",
+    "source": "hand"
+  },
+  {
+    "service": "telnet",
+    "type": "magic",
+    "magic_hex": "ff",
+    "source": "hand"
+  },
+  {
+    "service": "amqp",
+    "pattern": "^AMQP\\x00\\x00\\x09\\x01$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "amqp",
+    "pattern": "^AMQP\\x01\\x01\\x00\\x0a$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "bittorrentv10",
+    "pattern": "^Nice try\\.\\.\\.\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "bittorrentv10",
+    "pattern": "^\\x13BitTorrent protocol\\0\\0\\0\\0\\0\\0\\0\\0",
+    "type": "magic",
+    "source": "nmap"
+  },
+  {
+    "service": "ftp",
+    "pattern": "(?i)^220-\\r?\\n220 - ftp",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ftp",
+    "pattern": "(?i)^220 [-.\\w ]+ftp.*\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ftp",
+    "pattern": "(?i)^220-[-.\\w ]+ftp.*\\r\\n220",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ftp",
+    "pattern": "(?i)^220[- ].*ftp server.*\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ftp",
+    "pattern": "(?i)^220[\\s-].*ftp[^\\r]*\\r\\n214[\\s-]",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "http",
+    "pattern": "^HTTP/1\\.[01] \\d\\d\\d.*\\r\\nDate:.*\\r\\nServer: Stronghold",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "http",
+    "pattern": "^HTTP/1\\.0 \\d\\d\\d [\\w ]+\\r\\nX-elastic-product: Elasticsearch\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "http",
+    "pattern": "^UNKNOWN 400 Bad Request\\r\\nServer: Check Point SVN foundation\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "http",
+    "pattern": "^HTTP/1\\.1 400 Bad Request\\r\\nContent-Type: text/plain(?:; charset=utf-8)?\\r\\nConnection: close\\r\\n\\r\\n400 Bad Request",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "http",
+    "pattern": "^HTTP/1\\.1 405 Method Not Allowed\\r\\nContent-Length: 0\\r\\nConnection: close\\r\\nAccept-Ranges: bytes\\r\\nDate: .* GMT\\r\\n\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "imapv4",
+    "pattern": "^\\+OK X1 ([-\\w_.]+)\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "imapv4",
+    "pattern": "^\\* OK Welcome to Binc IMAP",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "imapv4",
+    "pattern": "^\\* OK \\[CAPABILITY IMAP4[Rr][Ee][Vv]1",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "imapv4",
+    "pattern": "(?i)^\\* OK [\\x20-\\x7e]*imap[\\x20-\\x7e]*\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "imapv4",
+    "pattern": "(?i)^\\* OK ([-.\\w]+) [-.\\w,:+ ]*imap[-.\\w,:+ ]*\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "irc",
+    "pattern": "^PING :42\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "irc",
+    "pattern": "^:([\\w._-]+) 461 HELP\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "irc",
+    "pattern": "^NOTICE AUTH :\\*\\*\\* Checking Ident\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "irc",
+    "pattern": "^:([-\\w_.]+) 451 \\*  :Register first\\.\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "irc",
+    "pattern": "^ERROR :Trying to reconnect too fast\\.\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ldap",
+    "pattern": "(?s)^0.\\x02.*TLS confidentiality required",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ldap",
+    "pattern": "(?s)^0..?\\x02\\x01\\x01a..?\\n\\x01.\\x04\\0\\x04",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ldap",
+    "pattern": "(?s)^0..?\\x02\\x01\\x07e..?\\n\\x01.\\x04\\0\\x04",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ldap",
+    "pattern": "^0\\x0c\\x02\\x01\\x01a\\x07\\n\\x011\\x04\\0\\x04\\0$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ldap",
+    "pattern": "^0\\x0c\\x02\\x01\\x01a\\x07\\n\\x01\\0\\x04\\0\\x04\\0",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "memcached",
+    "pattern": "^STAT pid \\d+\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "memcached",
+    "pattern": "^ERROR\\r\\nERROR\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "memcached",
+    "pattern": "^\\0\\x01\\0\\0\\0\\x01\\0\\0STAT ",
+    "type": "magic",
+    "source": "nmap"
+  },
+  {
+    "service": "memcached",
+    "pattern": "(?s)^STAT pid \\d+\\r\\nSTAT uptime (\\d+)\\r\\nSTAT time \\d+\\r\\nSTAT version ([.\\d]+)\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "memcached",
+    "pattern": "(?s)^STAT pid \\d+\\r\\nSTAT uptime (\\d+)\\r\\nSTAT time \\d+\\r\\nSTAT version ([.\\d]+) \\(?Ubuntu\\)?\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "mongodb",
+    "pattern": "(?s)^.*version.....([\\.\\d]+)",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "mongodb",
+    "pattern": "(?s)^.\\0\\0\\0....:0\\0\\0\\x01\\0\\0\\0\\x08\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\+\\0\\0\\0\\x02errmsg\\0\\x0e\\0\\0\\0need to login\\0\\x01ok\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "mongodb",
+    "pattern": "^HTTP/1\\.0 200 OK\\r\\nConnection: close\\r\\nContent-Type: text/plain\\r\\nContent-Length: 84\\r\\n\\r\\nIt looks like you are trying to access MongoDB over HTTP on the native driver port\\.\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "mongodb",
+    "pattern": "^HTTP/1\\.0 200 OK\\r\\nConnection: close\\r\\nContent-Type: text/plain\\r\\nContent-Length: 85\\r\\n\\r\\nIt looks like you are trying to access MongoDB over HTTP on the native driver port\\.\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "mongodb",
+    "pattern": "(?s)^.\\0\\0\\0....:0\\0\\0\\x01\\0\\0\\0\\x08\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0.\\0\\0\\0\\x01ok\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x02errmsg\\0.\\0\\0\\0not authorized on (\\S+) to execute command \\{ serverStatus: 1\\.0 \\}\\0\\x10code\\0\\r\\0\\0\\0",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "pop3",
+    "pattern": "^\\+OK\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "pop3",
+    "pattern": "^\\+OK Hi\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "pop3",
+    "pattern": "^\\+OK 200\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "pop3",
+    "pattern": "^\\+OK [-\\[\\]\\(\\)!,/+:<>@.\\w ]+\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "pop3",
+    "pattern": "^\\+OK [^<]+ <[\\d.]+@([\\w.-]+)>\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "redis",
+    "pattern": "^-ERR operation not permitted\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "redis",
+    "pattern": "^-NOAUTH Authentication required.\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "redis",
+    "pattern": "^-ERR wrong number of arguments for 'get' command\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "redis",
+    "pattern": "(?s)^\\$\\d+\\r\\n(?:#[^\\r\\n]*\\r\\n)*redis_version:([.\\d]+)\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "rtsp",
+    "pattern": "^RTSP/1\\.0 400 Bad Request\\r\\n\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "rtsp",
+    "pattern": "^RTSP/1\\.0 400 Bad Request\\r\\nCSeq: 0\\r\\n\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "rtsp",
+    "pattern": "^RTSP/1\\.0 200 OK\\r\\nServer: vlc ([\\w._-]+)\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "rtsp",
+    "pattern": "^RTSP/1\\.0 405 Method Not Allowed\\r\\nCSeq: 42\\r\\n\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "rtsp",
+    "pattern": "^HTTP/1\\.1 404 Not Found\\r\\nContent-Length: 0\\r\\nServer: AirTunes/[\\d.]+\\r\\n\\r\\n$",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "sip",
+    "pattern": "^SIP/2\\.0 ([-\\w .]+)\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "sip",
+    "pattern": "^SIP/2\\.0 ([-\\w\\s.]+)\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "sip",
+    "pattern": "(?s)^SIP/2\\.0 ([-\\w\\s.]+)\\r.*\\nUser-[Aa]gent: ([-\\w\\s/_\\.\\(\\)]+)\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "sip",
+    "pattern": "^SIP/2\\.0 ([-\\w .]+)\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: ([-\\w /_\\.\\(\\)]{1,80})",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "sip",
+    "pattern": "(?s)^SIP/2\\.0 ([-\\w\\s.]+)\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: ([-\\w\\s/_\\.\\(\\)]+)\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "smtp",
+    "pattern": "^554-([\\w.-]+)\\r\\n554 ",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "smtp",
+    "pattern": "^220[\\s-].*?E?SMTP[^\\r]*\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "smtp",
+    "pattern": "^572 Relay not authorized\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "smtp",
+    "pattern": "^550 (\\d\\.\\d\\.\\d) ([^\\r\\n]{1,248})",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "smtp",
+    "pattern": "(?i)^220[\\s-].*smtp[^\\r]*\\r\\n214[\\s-]",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "socks5",
+    "pattern": "^\\x05",
+    "type": "magic",
+    "source": "nmap"
+  },
+  {
+    "service": "socks5",
+    "pattern": "^\\x05\\0$",
+    "type": "magic",
+    "source": "nmap"
+  },
+  {
+    "service": "socks5",
+    "pattern": "^\\x05\\x01",
+    "type": "magic",
+    "source": "nmap"
+  },
+  {
+    "service": "socks5",
+    "pattern": "^\\x05\\x02",
+    "type": "magic",
+    "source": "nmap"
+  },
+  {
+    "service": "socks5",
+    "pattern": "^\\x05\\0\\x05\\x01",
+    "type": "magic",
+    "source": "nmap"
+  },
+  {
+    "service": "ssh",
+    "pattern": "^SSH-([\\d.]+)-",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ssh",
+    "pattern": "^SSH-1\\.5-X\\r?\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ssh",
+    "pattern": "^SSH-([\\d.]+)--\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ssh",
+    "pattern": "^SSH-2\\.0-PGP\\r?\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "ssh",
+    "pattern": "^SSH-([\\d.]+)-1\\r\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "telnet",
+    "pattern": "^\\n\\rCB % ",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "telnet",
+    "pattern": "^Password: $",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "telnet",
+    "pattern": "^\\r\\nICTNET>",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "telnet",
+    "pattern": "^connesso,1\\n",
+    "type": "banner",
+    "source": "nmap"
+  },
+  {
+    "service": "telnet",
+    "pattern": "^BAD_COMMAND\\n",
+    "type": "banner",
+    "source": "nmap"
+  }
+]

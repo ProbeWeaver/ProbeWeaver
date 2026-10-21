@@ -1,0 +1,17 @@
+// BIND9 authoritative-only variant (recursion disabled), in contrast with the
+// recursive baseline bind9 service. This changes response flags (no RA bit)
+// and behaviour.
+options {
+    directory "/var/cache/bind";
+
+    listen-on port 53 { any; };
+    listen-on-v6 { none; };
+
+    allow-query { any; };
+    recursion no;
+    allow-recursion { none; };
+    allow-transfer { any; };
+
+    dnssec-validation no;
+    querylog yes;
+};

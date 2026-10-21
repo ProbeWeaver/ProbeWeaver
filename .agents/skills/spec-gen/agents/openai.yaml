@@ -1,0 +1,6 @@
+interface:
+  display_name: "Protocol Spec Agent"
+  short_description: "Generate and validate document-backed protocol specs"
+  default_prompt: "Use $spec-gen to verify protocol identity, retrieve authoritative local evidence, generate a bounded spec, validate it offline, and request any required review before applying changes."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+Port 22
+PermitRootLogin yes
+PasswordAuthentication yes
+PermitEmptyPasswords yes
+Banner none
+Subsystem sftp /usr/lib/openssh/sftp-server

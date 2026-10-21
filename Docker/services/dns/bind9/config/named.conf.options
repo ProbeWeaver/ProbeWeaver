@@ -1,0 +1,26 @@
+// BIND9 configuration for honeypot DNS server
+// Allows any query for service fingerprinting research
+
+options {
+    directory "/var/cache/bind";
+
+    // Listen on all interfaces
+    listen-on port 53 { any; };
+    listen-on-v6 { none; };
+
+    // Allow queries from anywhere (for honeypot/research)
+    allow-query { any; };
+    allow-recursion { any; };
+    allow-transfer { any; };
+
+    // Performance settings
+    dnssec-validation no;
+    recursion yes;
+
+    // Log queries
+    querylog yes;
+
+};
+
+// Default zones are defined in /etc/bind/named.conf.default-zones
+// Keep this file focused on global options only.
